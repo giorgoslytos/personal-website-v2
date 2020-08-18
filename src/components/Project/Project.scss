@@ -1,12 +1,12 @@
 .project {
-  margin: 5rem auto;
+  margin: 8rem auto;
   display: flex;
   justify-content: center;
   .content {
-    width: 600px;
+    width: 550px;
   }
   .h3 {
-    margin: 0;
+    margin-bottom: 0.5rem;
   }
   .h5 {
     margin: 0;
@@ -19,6 +19,12 @@
   }
   .icons {
     margin-top: 0.5rem;
+    path {
+      transition: fill 0.4s;
+    }
+    & > a:hover > svg > path {
+      fill: #fff !important;
+    }
     :nth-child(2) {
       margin: 0 2rem;
     }

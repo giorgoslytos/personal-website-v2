@@ -6,38 +6,34 @@ body {
 .container {
   margin: 0 6rem;
 }
+
 .h {
   &1 {
     font-family: Poppins;
     font-size: 64px;
     color: #ffffff;
-    margin: 1rem 0;
   }
   &2 {
     font-family: Quicksand;
     font-size: 48px;
     margin-bottom: 8px;
     color: #ffffff;
-    margin: 1rem 0;
   }
   &3 {
     font-family: Quicksand;
     font-size: 36px;
     color: #ffffff;
-    margin: 1rem 0;
   }
   &4 {
     font-family: Quicksand;
     font-size: 36px;
     color: #c5c6c7;
-    margin: 1rem 0;
   }
 
   &5 {
     font-family: Quicksand;
     font-size: 24px;
     color: #ffffff;
-    margin: 1rem 0;
   }
 }
 
@@ -46,19 +42,16 @@ body {
     font-family: Economica;
     color: #00ffec;
     font-size: 60px;
-    margin: 1rem 0;
   }
   &2 {
     font-family: Economica;
     color: #00ffec;
     font-size: 48px;
-    margin: 1rem 0;
   }
   &3 {
     font-family: Economica;
     color: #00ffec;
     font-size: 24px;
-    margin: 1rem 0;
   }
 }
 
@@ -77,10 +70,12 @@ p {
   &.text-small {
     font-size: 18px;
     color: #c5c6c7;
+    line-height: 24px;
   }
 }
 
 a {
+  text-decoration: none;
   &.link {
     font-family: Quicksand;
     font-style: normal;
@@ -104,4 +99,62 @@ a {
   height: 1px;
   background-color: #c5c6c7;
   width: 100%;
+}
+
+.white {
+  color: #fff !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .h {
+    &1 {
+      font-size: 48px; //64
+    }
+    &2 {
+      font-size: 36px; //48
+    }
+    &3 {
+      font-size: 24px; //36
+    }
+    &4 {
+      font-size: 24px; //36
+    }
+
+    &5 {
+      font-size: 18px; //24
+    }
+  }
+
+  .q {
+    &1 {
+      font-size: 45px; //60
+    }
+    &2 {
+      font-size: 36px; //48
+    }
+    &3 {
+      font-size: 18px; //24
+    }
+  }
+
+  p {
+    &.text-large {
+      font-size: 18px; //24
+    }
+    &.text-medium {
+      font-size: 16px; //20
+    }
+    &.text-small {
+      font-size: 14px; //18
+    }
+  }
+
+  a {
+    &.link {
+      font-size: 18px; //24
+    }
+    &.mail {
+      font-size: 18px; //24
+    }
+  }
 }

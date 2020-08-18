@@ -2,11 +2,29 @@ import React from 'react';
 import CircleTitle from './components/CircleTitle/CircleTitle';
 import Badge from './components/Badge/Badge';
 import ProjectDesc from './components/ProjectDesc/ProjectDesc';
-import ProjectImg from './components/ProjectImg/ProjectImg';
-import BackImg from './images/hslcolorselector.png';
 import Project from './components/Project/Project';
 
 const Typo = () => {
+  const projects = [
+    {
+      projectNum: '01',
+      projectName: 'First Project',
+      projectDesc:
+        'Nice! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus ipsam officia saepe repellat quasi impedit, ab ratione modi, vero quisquam magni et esse sit. Beatae.',
+      projectTechs: ['React', 'Angular', 'Vue'],
+      projectLinks: ['github.com', 'google.com'],
+      projectImg: 'hslcolorselector.png',
+    },
+    {
+      projectNum: '02',
+      projectName: 'Second Project',
+      projectDesc:
+        'Nice! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus ipsam officia saepe repellat quasi impedit, ab ratione modi, vero quisquam magni et esse sit. Beatae.',
+      projectTechs: ['React', 'Angular', 'Vue'],
+      projectLinks: ['github.com', 'google.com'],
+      projectImg: 'react-footwear-shop.png',
+    },
+  ];
   return (
     <div className="container">
       <div>
@@ -31,12 +49,12 @@ const Typo = () => {
       <div className="hr"></div>
       <div>
         <div>
-          <a className="link" href="#">
+          <a className="link" href="/">
             Link
           </a>
         </div>
         <div>
-          <a className="mail" href="#">
+          <a className="mail" href="/">
             mail@mail.com
           </a>
         </div>
@@ -52,12 +70,13 @@ const Typo = () => {
       beatae. Blanditiis, vel."
         align="left"
       />
-      <ProjectImg align="left" img="hslcolorselector.png" />
-      <ProjectImg align="right" img="hslcolorselector.png" />
-      <ProjectImg align="lefta" img="hslcolorselector.png" />
-      <Project align="left" />
-      <Project align="right" />
-      <Project align="righta" />
+      {projects.map((projectInfo, index) => (
+        <Project
+          align={index % 2 === 0 ? 'left' : 'right'}
+          projectInfo={projectInfo}
+          key={projectInfo.projectName}
+        />
+      ))}
     </div>
   );
 };

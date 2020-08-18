@@ -24,7 +24,7 @@ const ProjectDesc = ({ text, align }) => {
   }
   return (
     <div className="project-desc" style={alignment}>
-      {text}
+      <p className="text-small white">{text}</p>
     </div>
   );
 };
