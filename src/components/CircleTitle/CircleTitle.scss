@@ -1,0 +1,17 @@
+.circle-title {
+  padding: 6rem;
+  &:before {
+    content: '';
+    height: 250px;
+    width: 250px;
+    background-color: #fff;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #293e4e;
+    transform: translate(-34%, -38%);
+    z-index: -1;
+  }
+  .q2 {
+    margin-right: 1rem;
+  }
+}

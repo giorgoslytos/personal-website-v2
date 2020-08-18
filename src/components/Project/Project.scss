@@ -1,0 +1,26 @@
+.project {
+  margin: 5rem auto;
+  display: flex;
+  justify-content: center;
+  .content {
+    width: 600px;
+  }
+  .h3 {
+    margin: 0;
+  }
+  .h5 {
+    margin: 0;
+  }
+  .badges {
+    margin: 1rem 0;
+    :nth-child(even) {
+      margin: 0 2rem;
+    }
+  }
+  .icons {
+    margin-top: 0.5rem;
+    :nth-child(2) {
+      margin: 0 2rem;
+    }
+  }
+}
