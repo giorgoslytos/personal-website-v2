@@ -1,0 +1,55 @@
+.NavBar {
+  position: fixed;
+  right: 0;
+  width: 100%;
+  text-align: end;
+  padding-right: 2rem;
+  background-color: #1f2833;
+  box-shadow: 0px 0px 16px 0px rgba(#0d1014, 0.8);
+  z-index: 3;
+  .menu-item,
+  .cta {
+    margin: 1.2rem 2rem;
+    cursor: pointer;
+    width: 120px;
+    .q3 {
+      font-size: 18px;
+    }
+  }
+  .cta {
+    padding: 0.7rem;
+  }
+  .menu-item {
+    padding-bottom: 0.2rem;
+    position: relative;
+    white-space: nowrap;
+    &.h5,
+    .q3 {
+      font-size: 18px !important;
+    }
+    &::after {
+      transition: width 0.8s ease 0s, opacity 0.8s ease 0s;
+      opacity: 0;
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 4px;
+      left: 0;
+      bottom: -4px;
+      background-color: #00ffec;
+    }
+    &:hover::after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+
+.hide {
+  transform: translateY(-100%);
+  box-shadow: none;
+}
+
+.nav-top {
+  box-shadow: none;
+}

@@ -2,9 +2,42 @@
 
 body {
   background-color: #1f2833;
+  margin: 0;
 }
 .container {
   margin: 0 6rem;
+  @media only screen and (max-width: 1200px) {
+    margin: 0 3rem;
+  }
+  @media only screen and (max-width: 800px) {
+    margin: 0 1rem;
+  }
+}
+.mx-2 {
+  margin: 0 2rem !important;
+}
+.m-2 {
+  margin: 2rem !important;
+}
+.text-center {
+  text-align: center;
+}
+
+.title {
+  color: white;
+  font-size: 32px;
+  font-family: Quicksand;
+  margin: 5rem 0;
+  .q3 {
+    font-size: 32px;
+  }
+  @media only screen and (max-width: 800px) {
+    margin: 2rem 0 -2rem 0;
+    font-size: 24px;
+    .q3 {
+      font-size: 24px;
+    }
+  }
 }
 
 .h {
@@ -55,22 +88,41 @@ body {
   }
 }
 
-p {
+.text-large {
   font-family: Quicksand;
   font-style: normal;
   font-weight: normal;
-  &.text-large {
-    font-size: 24px;
-    color: #ffffff;
+  margin: 0;
+  font-size: 24px;
+  color: #ffffff;
+}
+.text-medium {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  font-size: 20px;
+  color: #c5c6c7;
+}
+.text-small {
+  font-family: Quicksand;
+  font-style: normal;
+  font-weight: normal;
+  margin: 0;
+  font-size: 18px;
+  color: #c5c6c7;
+  line-height: 24px;
+}
+
+.icon {
+  cursor: pointer;
+  path {
+    transition: fill 0.4s;
   }
-  &.text-medium {
-    font-size: 20px;
-    color: #c5c6c7;
-  }
-  &.text-small {
-    font-size: 18px;
-    color: #c5c6c7;
-    line-height: 24px;
+  &:hover {
+    & > path {
+      fill: #fff !important;
+    }
   }
 }
 
@@ -92,6 +144,63 @@ a {
     color: #fff;
     writing-mode: vertical-rl;
     text-orientation: mixed;
+    transition: ease-in color 0.4s;
+    &:hover {
+      color: #00ffec;
+    }
+  }
+}
+
+.form-control {
+  margin: 20px 0;
+  .h5 {
+    margin-bottom: 2px;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 100px #293e4e inset;
+    -webkit-text-size-adjust: 24px;
+    -webkit-text-fill-color: #fff;
+  }
+  @media only screen and (max-width: 600px) {
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+      font-size: 18px;
+    }
+  }
+  .input {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 24px;
+    font-family: Quicksand;
+    border: 0;
+    color: #fff;
+    border-bottom: 1px solid #00ffec;
+    &:focus {
+      outline: 0;
+      background-color: #293e4e;
+      &::placeholder {
+        color: rgba($color: #909daa, $alpha: 0.5);
+      }
+    }
+    &::placeholder {
+      color: #909daa;
+      font-family: Quicksand;
+      font-size: 24px;
+      line-height: 30px;
+      &:focus {
+        // color: rgba($color: #909daa, $alpha: 1);
+      }
+      @media only screen and (max-width: 600px) {
+        font-size: 18px;
+      }
+    }
   }
 }
 
@@ -104,7 +213,24 @@ a {
 .white {
   color: #fff !important;
 }
-
+.cta {
+  display: inline-block;
+  border: 2px solid #00ffec;
+  padding: 1rem;
+  width: 165px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in;
+  &:hover {
+    background-color: rgba(#00ffec, 0.2);
+  }
+  &:active {
+    background-color: rgba(#00ffec, 0.1);
+  }
+}
+.text-center {
+  text-align: center;
+}
 @media only screen and (max-width: 600px) {
   .h {
     &1 {
@@ -137,16 +263,14 @@ a {
     }
   }
 
-  p {
-    &.text-large {
-      font-size: 18px; //24
-    }
-    &.text-medium {
-      font-size: 16px; //20
-    }
-    &.text-small {
-      font-size: 14px; //18
-    }
+  .text-large {
+    font-size: 18px; //24
+  }
+  .text-medium {
+    font-size: 16px; //20
+  }
+  .text-small {
+    font-size: 14px; //18
   }
 
   a {

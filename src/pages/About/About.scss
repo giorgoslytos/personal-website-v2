@@ -1,0 +1,58 @@
+.About {
+  .title {
+    margin: 4rem 0;
+    display: flex;
+    .title-content {
+      margin-right: 2rem;
+      min-width: fit-content;
+    }
+    .title-line {
+      width: 100%;
+      background-color: #c5c6c7;
+      height: 1px;
+      margin: auto;
+    }
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+    margin: 2rem 0;
+    @media only screen and (min-width: 1400px) {
+      margin: 4rem;
+    }
+    .circle-title {
+      text-align: center !important;
+      flex: 1;
+      @media only screen and (max-width: 500px) {
+        padding-right: 0;
+      }
+    }
+    .content {
+      flex: 2;
+    }
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
+    }
+    @media only screen and (max-width: 1000px) {
+      .circle-title {
+        text-align: left !important;
+        align-self: start;
+      }
+      flex-direction: column !important;
+    }
+  }
+  @media only screen and (min-width: 1400px) {
+    .circle-title {
+      flex: 2 !important;
+    }
+    .content {
+      flex: 3 !important;
+    }
+  }
+  p {
+    margin: 2rem 0;
+  }
+  .badge {
+    margin: 1.2rem 2rem;
+  }
+}

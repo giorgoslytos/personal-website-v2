@@ -1,8 +1,8 @@
 import React from 'react';
 import CircleTitle from './components/CircleTitle/CircleTitle';
-import Badge from './components/Badge/Badge';
-import ProjectDesc from './components/ProjectDesc/ProjectDesc';
 import Project from './components/Project/Project';
+import Contact from './pages/Contact/Contact';
+import Projects from './pages/Projects/Projects';
 
 const Typo = () => {
   const projects = [
@@ -62,21 +62,6 @@ const Typo = () => {
       <div className="hr"></div>
       <CircleTitle num="01.01" title="Who am I?" align="right" />
       <CircleTitle num="01.01" title="Who am I?" align="left" />
-      <Badge name="Intellij IDEA" />
-      <ProjectDesc
-        text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eum ipsum amet
-      sed quidem officiis cum eos porro nisi est blanditiis veritatis quisquam
-      facilis eius dolores similique dignissimos aperiam officia, ad corrupti ab
-      beatae. Blanditiis, vel."
-        align="left"
-      />
-      {projects.map((projectInfo, index) => (
-        <Project
-          align={index % 2 === 0 ? 'left' : 'right'}
-          projectInfo={projectInfo}
-          key={projectInfo.projectName}
-        />
-      ))}
     </div>
   );
 };

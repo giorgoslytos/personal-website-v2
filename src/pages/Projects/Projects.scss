@@ -1,0 +1,15 @@
+.Projects {
+  .title {
+    display: flex;
+    .title-content {
+      margin-right: 2rem;
+      min-width: fit-content;
+    }
+    .title-line {
+      width: 100%;
+      background-color: #c5c6c7;
+      height: 1px;
+      margin: auto;
+    }
+  }
+}

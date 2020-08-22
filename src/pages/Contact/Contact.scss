@@ -1,0 +1,90 @@
+.Contact {
+  position: relative;
+  background-color: #293e4e;
+  border: 2px solid #00ffec;
+  margin-right: -6rem;
+
+  .fake-cta {
+    display: inline-block;
+    border: 2px solid #00ffec;
+    padding: 1rem;
+    width: 165px;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: #1f2833;
+  }
+  .desc {
+    margin-top: 8rem;
+    text-align: center;
+  }
+  @media only screen and (max-width: 1200px) {
+    margin-right: -3rem;
+  }
+  @media only screen and (max-width: 800px) {
+    margin-right: -1rem;
+  }
+
+  .links-wrapper {
+    margin-top: auto;
+    text-align: -webkit-center;
+    flex: 1;
+    margin-right: -6rem;
+    @media only screen and (max-width: 1200px) {
+      margin-right: -3rem;
+    }
+    @media only screen and (max-width: 800px) {
+      margin-right: -1rem;
+    }
+    @media only screen and (max-width: 800px) {
+      display: none;
+    }
+  }
+  .vertical-line {
+    width: 2px;
+    background-color: #c5c6c7;
+    height: 200px;
+    margin: 0 auto;
+  }
+  svg {
+    display: block;
+    margin: 1rem 0;
+  }
+  .forms-wrapper {
+    margin: 2rem 0;
+  }
+
+  .cta {
+    margin: 2rem 0;
+  }
+  .footer {
+    margin: 2rem 0;
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: -20px 0;
+    & > .form-control {
+      width: 48%;
+      @media only screen and (max-width: 800px) {
+        width: 100%;
+      }
+    }
+    @media only screen and (max-width: 800px) {
+      flex-direction: column;
+      & > .form-control:first-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .contact-wrapper {
+    display: flex;
+  }
+  .content-container {
+    flex: 9;
+    margin: 0 2rem;
+  }
+}

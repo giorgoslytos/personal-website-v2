@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Project.scss';
-import ProjectImg from '../ProjectImg/ProjectImg';
-import ProjectDesc from '../ProjectDesc/ProjectDesc';
+import ProjectImg from './ProjectImg/ProjectImg';
+import ProjectDesc from './ProjectDesc/ProjectDesc';
 import Badge from '../Badge/Badge';
 
 const Project = ({ align, projectInfo }) => {
@@ -16,11 +16,16 @@ const Project = ({ align, projectInfo }) => {
     >
       <div
         className="content"
-        style={
-          align === 'right' ? { direction: 'rtl' } : { direction: 'initial' }
-        }
+        style={align === 'right' ? { direction: 'rtl' } : { direction: 'ltr' }}
       >
-        <div className="h5">
+        <div
+          className="h5"
+          style={
+            align === 'right'
+              ? { direction: 'ltr', textAlign: 'right', alignSelf: 'stretch' }
+              : { direction: 'ltr' }
+          }
+        >
           <span style={{ color: '#00FFEC' }}>
             {'03.' + projectInfo.projectNum}{' '}
           </span>
@@ -38,6 +43,7 @@ const Project = ({ align, projectInfo }) => {
             <svg
               width="31"
               height="31"
+              className="icon"
               viewBox="0 0 31 31"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -50,6 +56,7 @@ const Project = ({ align, projectInfo }) => {
           </a>
           <a href={projectInfo.projectLinks[1]}>
             <svg
+              className="icon"
               width="30"
               height="30"
               viewBox="0 0 30 30"
