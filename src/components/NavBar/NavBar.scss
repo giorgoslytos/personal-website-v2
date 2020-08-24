@@ -4,12 +4,29 @@
   width: 100%;
   text-align: end;
   padding-right: 2rem;
-  background-color: #1f2833;
-  box-shadow: 0px 0px 16px 0px rgba(#0d1014, 0.8);
+  background-color: #001224;
   z-index: 3;
+  transition: box-shadow 0.6s ease, transform 0.6s ease;
+  .hamburger-react {
+    margin: 0.7rem 1.5rem 0 auto;
+    display: none;
+    z-index: 3;
+  }
+  .menu-mobile {
+    display: none;
+  }
+  @media only screen and (max-width: 700px) {
+    .menu {
+      display: none;
+    }
+    .hamburger-react {
+      display: inline-block;
+    }
+  }
+
   .menu-item,
   .cta {
-    margin: 1.2rem 2rem;
+    margin: 0.8rem 2rem;
     cursor: pointer;
     width: 120px;
     .q3 {
@@ -19,37 +36,62 @@
   .cta {
     padding: 0.7rem;
   }
-  .menu-item {
-    padding-bottom: 0.2rem;
-    position: relative;
-    white-space: nowrap;
-    &.h5,
-    .q3 {
-      font-size: 18px !important;
-    }
-    &::after {
-      transition: width 0.8s ease 0s, opacity 0.8s ease 0s;
-      opacity: 0;
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 4px;
-      left: 0;
-      bottom: -4px;
-      background-color: #00ffec;
-    }
-    &:hover::after {
+
+  &.hide {
+    transform: translateY(-100%);
+    box-shadow: none !important;
+  }
+
+  &.nav-top {
+    box-shadow: none;
+  }
+  &.shadow {
+    box-shadow: 0px 0px 16px 0px rgba(#00ffee34, 0.2);
+  }
+}
+.menu-mobile {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+  background: #002e52;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  transition: transform 0.4s ease;
+  width: 100%;
+  z-index: 2;
+}
+
+.menu-item {
+  padding-bottom: 0.2rem;
+  position: relative;
+  white-space: nowrap;
+  &.h5,
+  .q3 {
+    font-size: 18px !important;
+  }
+  &::after {
+    transition: width 0.4s ease 0s, opacity 0.4s ease 0s;
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    left: 0;
+    bottom: -4px;
+    background-color: #00ffec;
+  }
+  &:hover::after {
+    width: 100%;
+    opacity: 1;
+  }
+  &.active {
+    &:after {
       width: 100%;
       opacity: 1;
     }
   }
-}
-
-.hide {
-  transform: translateY(-100%);
-  box-shadow: none;
-}
-
-.nav-top {
-  box-shadow: none;
 }

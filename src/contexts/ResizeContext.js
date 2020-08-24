@@ -24,7 +24,7 @@ const ResizeContextProvider = (props) => {
       }
     }
     debouncedHandleResize()
-    console.log(width)
+    // console.log(width)
     window.addEventListener('resize', debouncedHandleResize)
     return () =>
       window.removeEventListener('resize', debouncedHandleResize)

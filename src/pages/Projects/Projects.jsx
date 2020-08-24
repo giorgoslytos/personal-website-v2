@@ -10,7 +10,7 @@ const Projects = () => {
     console.log(projects);
   });
   return (
-    <div className="Projects">
+    <div className="Projects" id="projects">
       <div className="title">
         <div className="title-content">
           <span className="q3">03. </span>projects

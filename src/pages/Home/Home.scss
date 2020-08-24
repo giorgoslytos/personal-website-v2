@@ -1,6 +1,4 @@
 .Home {
-  height: 100vh;
-
   .main {
     display: flex;
     flex-direction: row;
@@ -42,6 +40,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    transition: 0.8s opacity ease;
     .links-wrapper {
       display: flex;
       justify-content: space-between;
@@ -54,14 +53,21 @@
       font-size: 16px;
       line-height: 20px;
       color: #c5c6c7;
+      cursor: pointer;
+      transition: color 0.4s ease;
+      &:hover {
+        color: #00ffec;
+        .cta-line {
+          background-color: #00ffec;
+        }
+      }
     }
     .cta-line {
-      // transform: translateX(-50%);
       height: 40px;
       width: 1px;
       margin: 1rem auto 0 auto;
       background-color: #c5c6c7;
-      cursor: pointer;
+      transition: background-color 0.4s ease;
     }
   }
 }

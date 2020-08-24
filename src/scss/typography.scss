@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Economica&family=Poppins&family=Quicksand&display=swap');
 
+html {
+  scroll-behavior: smooth;
+}
 body {
-  background-color: #1f2833;
+  background-color: #001224;
   margin: 0;
 }
 .container {
@@ -121,7 +124,7 @@ body {
   }
   &:hover {
     & > path {
-      fill: #fff !important;
+      fill: #00ffec !important;
     }
   }
 }
@@ -160,7 +163,7 @@ a {
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 100px #293e4e inset;
+    -webkit-box-shadow: 0 0 0 100px #153044 inset;
     -webkit-text-size-adjust: 24px;
     -webkit-text-fill-color: #fff;
   }
@@ -184,7 +187,7 @@ a {
     border-bottom: 1px solid #00ffec;
     &:focus {
       outline: 0;
-      background-color: #293e4e;
+      background-color: #153044;
       &::placeholder {
         color: rgba($color: #909daa, $alpha: 0.5);
       }
@@ -226,6 +229,9 @@ a {
   }
   &:active {
     background-color: rgba(#00ffec, 0.1);
+  }
+  &-active {
+    background-color: rgba(0, 255, 236, 0.1);
   }
 }
 .text-center {

@@ -8,7 +8,7 @@ const FirebaseContextProvider = (props) => {
   const [skills, setSkills] = useState(null);
   const [technologies, setTechnologies] = useState(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const db = firebase.firestore();
       let data = await db.collection("projects").get();

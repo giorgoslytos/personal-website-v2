@@ -1,7 +1,7 @@
 import React from 'react';
-import Typo from './Typo';
 import ResizeContextProvider from './contexts/ResizeContext';
 import FirebaseContextProvider from './contexts/FirebaseContext';
+import ScrollContextProvider from './contexts/ScrollContext';
 import Projects from './pages/Projects/Projects';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
@@ -10,20 +10,20 @@ import NavBar from './components/NavBar/NavBar';
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <div className="container">
-        <ResizeContextProvider>
-          <FirebaseContextProvider>
-            <Home />
-            <About />
-            <Projects />
-            <Contact />
-          </FirebaseContextProvider>
-        </ResizeContextProvider>
-
-
-      </div>
+    <div className="App" id="home">
+      <FirebaseContextProvider>
+        <ScrollContextProvider>
+          <ResizeContextProvider>
+            <NavBar />
+            <div className="container">
+              <Home />
+              <About />
+              <Projects />
+              <Contact />
+            </div>
+          </ResizeContextProvider>
+        </ScrollContextProvider>
+      </FirebaseContextProvider>
     </div>
   );
 }

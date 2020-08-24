@@ -12,7 +12,7 @@ const About = () => {
     console.log(technologies);
   });
   return (
-    <div className="About">
+    <div className="About" id="about">
       <div className="title">
         <div className="title-content">
           <span className="q3">02. </span>
