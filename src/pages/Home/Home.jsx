@@ -1,18 +1,58 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import './Home.scss';
 import { ScrollContext } from '../../contexts/ScrollContext';
+import { gsap } from 'gsap';
 
 const Home = () => {
   const { scrollPos } = useContext(ScrollContext);
+  const revealRefs = useRef([]);
+  const pathRef = useRef();
+  const svgRef = useRef();
 
+  revealRefs.current = [];
+  useEffect(() => {
+    gsap.from(pathRef.current, {
+      autoAlpha: 0,
+      duration: 2.5,
+      ease: 'power3.inOut',
+      strokeDashoffset: 1400,
+      delay: 0.8,
+    });
+
+    revealRefs.current.forEach((el, index) => {
+      gsap.fromTo(
+        el,
+        {
+          top: '20px',
+          opacity: 0,
+          visibility: 'hidden',
+        },
+        {
+          duration: 1.2,
+          opacity: 1,
+          visibility: 'visible',
+          top: '0px',
+          ease: 'power4',
+          delay: `${3 + index * 0.3}`,
+        }
+      );
+    });
+  }, []);
+  const addToRefs = (el) => {
+    if (el && !revealRefs.current.includes(el)) {
+      revealRefs.current.push(el);
+    }
+  };
   return (
     <div className="Home">
       <div className="main">
         <svg
+          className="filter"
           width="200"
           height="228"
           viewBox="0 0 200 228"
           fill="none"
+          ref={svgRef}
           xmlns="http://www.w3.org/2000/svg"
         >
           <mask
@@ -33,6 +73,8 @@ const Home = () => {
           </mask>
           <g mask="url(#mask0)">
             <path
+              ref={pathRef}
+              className="path"
               d="M110.799 86.0952L67.0633 87.1751L64.9036 88.7949L63.8237 90.9546V129.29L76.7823 133.61H94.6003V88.7949H96.2201V135.77L70.303 138.469L63.8237 141.169V156.827L96.2201 158.447L98.3799 160.607L99.4598 163.847V182.745L94.6003 184.904L89.7408 185.984H40.6062L6.58997 166.006V60.718L99.4598 6.72391L193.409 60.718V167.086L100.54 221.62L63.8237 200.563L115.658 196.783V41.8201H131.316V174.106"
               stroke="#00FFEC"
               strokeWidth="15"
@@ -40,16 +82,22 @@ const Home = () => {
           </g>
         </svg>
         <div className="main-text">
-          <div className="h1">Hi!</div>
-          <div className="h3">
+          <div className="h1" ref={addToRefs}>
+            Hi!
+          </div>
+          <div className="h3" ref={addToRefs}>
             I'm <span className="q1">george litos</span>
           </div>
-          <div className="h4">software engineer &&</div>
-          <div className="h4">full stack web developer</div>
+          <div className="h4" ref={addToRefs}>
+            software engineer &&
+          </div>
+          <div className="h4" ref={addToRefs}>
+            full stack web developer
+          </div>
         </div>
       </div>
       <div className="footer" style={{ opacity: scrollPos ? ' 0' : '1' }}>
-        <div className="links-wrapper">
+        <div className="links-wrapper" ref={addToRefs}>
           <a
             target="blank"
             href="https://www.linkedin.com/in/george-litos-215b2918a/"
@@ -70,9 +118,9 @@ const Home = () => {
           </a>
           <a href="https://github.com/giorgoslytos" target="blank">
             <svg
-              width="31"
+              width="29"
               className="icon"
-              height="31"
+              height="29"
               viewBox="0 0 31 31"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +132,7 @@ const Home = () => {
             </svg>
           </a>
         </div>
-        <a className="show-more" href="#about">
+        <a className="show-more" href="#about" ref={addToRefs}>
           show more<div className="cta-line"></div>
         </a>
       </div>

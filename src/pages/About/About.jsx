@@ -40,7 +40,7 @@ const About = () => {
             the web and latest technology developments.
           </p>
           <p className="text-medium white">
-            - I have professional experience as AEM developer (a CMS written in
+            - I have professional experience as an AEM developer (a CMS written in
             Java), JQuery, Bootstrap and Parsley
           </p>
         </div>

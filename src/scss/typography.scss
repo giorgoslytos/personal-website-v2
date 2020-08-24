@@ -7,6 +7,9 @@ body {
   background-color: #001224;
   margin: 0;
 }
+.App {
+  visibility: hidden;
+}
 .container {
   margin: 0 6rem;
   @media only screen and (max-width: 1200px) {
@@ -218,6 +221,7 @@ a {
 }
 .cta {
   display: inline-block;
+  position: relative;
   border: 2px solid #00ffec;
   padding: 1rem;
   width: 165px;
