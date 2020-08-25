@@ -1,25 +1,21 @@
 .circle-title {
   padding: 6rem;
   min-width: fit-content;
+  text-align: left;
   @media only screen and (max-width: 800px) {
     .q2,
     .h2 {
       font-size: 32px !important;
     }
-    &:before {
-      height: 150px;
-      width: 150px;
-    }
   }
-  &:before {
-    content: '';
+  .circle {
     height: 250px;
     width: 250px;
     background-color: #fff;
     position: absolute;
     border-radius: 50%;
     background-color: #153044;
-    transform: translate(-34%, -38%);
+    transform: translate(-40%, -62%);
     z-index: -1;
     @media only screen and (max-width: 800px) {
       height: 150px;

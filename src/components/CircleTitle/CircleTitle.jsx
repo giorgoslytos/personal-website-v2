@@ -6,6 +6,7 @@ const CircleTitle = ({ num, title }) => {
     <div className="circle-title">
       <span className="q2">{num}</span>
       <span className="h2">{title}</span>
+      <div className="circle"></div>
     </div>
   );
 };
