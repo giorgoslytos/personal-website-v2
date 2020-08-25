@@ -8,17 +8,33 @@ const Home = () => {
   const revealRefs = useRef([]);
   const pathRef = useRef();
   const svgRef = useRef();
-
   revealRefs.current = [];
+
+  const drawSvg = (event) => {
+    event.stopPropagation();
+    gsap.fromTo(
+      pathRef.current,
+      {
+        autoAlpha: 0,
+        strokeDashoffset: 1400,
+      },
+      {
+        autoAlpha: 1,
+        ease: 'power2.inOut',
+        strokeDashoffset: 0,
+        duration: 2.5,
+      }
+    );
+  };
+
   useEffect(() => {
     gsap.from(pathRef.current, {
       autoAlpha: 0,
-      duration: 2.5,
+      duration: 3,
       ease: 'power3.inOut',
       strokeDashoffset: 1400,
       delay: 0.8,
     });
-
     revealRefs.current.forEach((el, index) => {
       gsap.fromTo(
         el,
@@ -47,6 +63,7 @@ const Home = () => {
     <div className="Home">
       <div className="main">
         <svg
+          onClick={drawSvg}
           className="filter"
           width="200"
           height="228"

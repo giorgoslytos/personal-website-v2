@@ -10,6 +10,9 @@
       stroke-dashoffset: 0;
     }
   }
+  svg {
+    cursor: pointer;
+  }
   .filter {
     filter: drop-shadow(1px 1px 2px #00ffec);
   }

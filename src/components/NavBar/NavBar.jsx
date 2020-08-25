@@ -3,6 +3,10 @@ import { ScrollContext } from '../../contexts/ScrollContext';
 import { Pivot as Hamburger } from 'hamburger-react';
 import './NavBar.scss';
 import { gsap } from 'gsap';
+import { CSSPlugin } from 'gsap/CSSPlugin';
+import { CSSRulePlugin } from 'gsap/CSSRulePlugin';
+
+gsap.registerPlugin(CSSPlugin, CSSRulePlugin);
 
 const NavBar = () => {
   const { scrollPos, navPos } = useContext(ScrollContext);
@@ -12,6 +16,7 @@ const NavBar = () => {
   const revealRefs = useRef([]);
   revealRefs.current = [];
   const headerRef = useRef();
+  const rule = CSSRulePlugin.getRule('.active:after');
 
   useEffect(() => {
     if (isOpen) document.body.style.overflow = 'hidden';
@@ -28,6 +33,7 @@ const NavBar = () => {
   });
 
   useEffect(() => {
+    console.log(revealRefs);
     gsap.from(headerRef.current, {
       autoAlpha: 0,
       duration: 1.2,
@@ -52,6 +58,20 @@ const NavBar = () => {
         }
       );
     });
+  }, []);
+  useEffect(() => {
+    console.log(rule);
+    gsap.fromTo(
+      rule,
+      {
+        width: '0%',
+      },
+      {
+        width: '100%',
+        delay: 3.8,
+        duration: 0.8,
+      }
+    );
   }, []);
 
   const addToRefs = (el) => {

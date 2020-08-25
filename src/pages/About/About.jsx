@@ -4,13 +4,24 @@ import CircleTitle from '../../components/CircleTitle/CircleTitle';
 import { FirebaseContext } from '../../contexts/FirebaseContext';
 import Badge from '../../components/Badge/Badge';
 import Loader from 'react-loader-spinner';
+import { gsap } from 'gsap';
+import { CSSPlugin } from 'gsap/CSSPlugin';
+import { CSSRulePlugin } from 'gsap/CSSRulePlugin';
+
+gsap.registerPlugin(CSSPlugin, CSSRulePlugin);
 
 const About = () => {
   const { skills, technologies } = useContext(FirebaseContext);
+  // const circlesRef = useRef([]);
+  // const textRef = useRef([]);
+
   useEffect(() => {
     console.log(skills ? skills[0].skills : 'waiting');
     console.log(technologies);
   });
+
+  useEffect(() => {});
+
   return (
     <div className="About" id="about">
       <div className="title">
@@ -40,8 +51,8 @@ const About = () => {
             the web and latest technology developments.
           </p>
           <p className="text-medium white">
-            - I have professional experience as an AEM developer (a CMS written in
-            Java), JQuery, Bootstrap and Parsley
+            - I have professional experience as an AEM developer (a CMS written
+            in Java), JQuery, Bootstrap and Parsley
           </p>
         </div>
       </div>
