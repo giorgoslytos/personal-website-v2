@@ -1,10 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './Project.scss';
 import ProjectImg from './ProjectImg/ProjectImg';
 import ProjectDesc from './ProjectDesc/ProjectDesc';
 import Badge from '../Badge/Badge';
+import { gsapShorthand } from '../../utils/gsapShorthand';
 
 const Project = ({ align, projectInfo }) => {
+  const refs = useRef([]);
+  useEffect(() => {
+    refs.current.forEach((el) => {
+      gsapShorthand(el, 0.8, '20px');
+    });
+  }, []);
+
+  const addToRefs = (el) => {
+    if (el && !refs.current.includes(el)) {
+      refs.current.push(el);
+    }
+  };
+
   return (
     <div
       className="project"
@@ -20,6 +34,7 @@ const Project = ({ align, projectInfo }) => {
       >
         <div
           className="h5"
+          ref={addToRefs}
           style={
             align === 'right'
               ? { direction: 'ltr', textAlign: 'right', alignSelf: 'stretch' }
@@ -31,7 +46,9 @@ const Project = ({ align, projectInfo }) => {
           </span>
           Project
         </div>
-        <div className="h3">{projectInfo.projectName}</div>
+        <div className="h3" ref={addToRefs}>
+          {projectInfo.projectName}
+        </div>
         <ProjectDesc align={align} text={projectInfo.projectDesc} />
         <div className="badges">
           {projectInfo.projectTechs.map((badgeName) => (
