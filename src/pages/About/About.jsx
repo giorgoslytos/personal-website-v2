@@ -14,7 +14,10 @@ gsap.registerPlugin(CSSPlugin, CSSRulePlugin);
 const About = () => {
   const { skills, technologies } = useContext(FirebaseContext);
   const textRefs = useRef([]);
-  const badgeRefs = useRef([]);
+  const techBadgeRefs = useRef([]);
+  const skillBadgeRefs = useRef([]);
+  const skillsDivRef = useRef([]);
+  const techsDivRef = useRef([]);
 
   useEffect(() => {
     console.log(textRefs);
@@ -23,7 +26,6 @@ const About = () => {
         trigger: el,
         start: 'top 90%',
         end: 'bottom 10%',
-        markers: true,
         onEnter: () => {
           gsap.fromTo(
             el,
@@ -44,7 +46,6 @@ const About = () => {
             { left: '20px', autoAlpha: 0 },
             { left: 0, autoAlpha: 1, duration: 1 }
           );
-          console.log('onEnterBack');
         },
         onLeaveBack: () => {
           gsap.fromTo(
@@ -58,6 +59,58 @@ const About = () => {
   }, []);
 
   useEffect(() => {
+    skillBadgeRefs.current.forEach((badge, index) => {
+      gsap.fromTo(
+        badge,
+        {
+          autoAlpha: 0,
+          top: '20px',
+        },
+        {
+          duration: 0.5,
+          delay: `${index * 0.1}`,
+          autoAlpha: 1,
+          top: 0,
+          ease: 'power4.inOut',
+          scrollTrigger: {
+            id: `skills-${index + 1}`,
+            trigger: skillsDivRef.current,
+            start: 'top 50%',
+            toggleActions: 'play none none none',
+            markers: true,
+          },
+        }
+      );
+    });
+  }, [skills]);
+
+  useEffect(() => {
+    techBadgeRefs.current.forEach((badge, index) => {
+      gsap.fromTo(
+        badge,
+        {
+          autoAlpha: 0,
+          top: '20px',
+        },
+        {
+          duration: 0.5,
+          delay: `${index * 0.1}`,
+          autoAlpha: 1,
+          top: 0,
+          ease: 'power4.inOut',
+          scrollTrigger: {
+            id: `techs-${index + 1}`,
+            trigger: techsDivRef.current,
+            start: 'top 50%',
+            toggleActions: 'play none none none',
+            markers: true,
+          },
+        }
+      );
+    });
+  }, [technologies]);
+
+  useEffect(() => {
     ScrollTrigger.refresh();
   }, [skills, technologies]);
 
@@ -66,9 +119,14 @@ const About = () => {
       textRefs.current.push(el);
     }
   };
-  const addToBadgeRefs = (el) => {
-    if (el && !badgeRefs.current.includes(el)) {
-      badgeRefs.current.push(el);
+  const addToSkillsBadgeRefs = (el) => {
+    if (el && !skillBadgeRefs.current.includes(el)) {
+      skillBadgeRefs.current.push(el);
+    }
+  };
+  const addToTechBadgeRefs = (el) => {
+    if (el && !techBadgeRefs.current.includes(el)) {
+      techBadgeRefs.current.push(el);
     }
   };
 
@@ -114,10 +172,10 @@ const About = () => {
             as a professional or as a hobbyist, (I'm not an expert by any
             means):
           </p>
-          <div className="text-center">
+          <div className="text-center" ref={skillsDivRef}>
             {skills ? (
               skills[0].skills.map((skill) => (
-                <Badge name={skill} key={skill} ref={addToBadgeRefs} />
+                <Badge name={skill} key={skill} ref={addToSkillsBadgeRefs} />
               ))
             ) : (
               <Loader
@@ -140,22 +198,14 @@ const About = () => {
             quasi quis, praesentium labore culpa adipisci. Aspernatur quibusdam
             ut molestiae deserunt, quas nisi?
           </p>
-          {/* <p className="text-medium white m-2" ref={addToTextRefs}>
-            This subsection doesn't really have any meaning, but why not include
-            it when it can make my site appear bigger? ;). It is also a great
-            conversation starter!
-          </p> */}
           <p className="text-medium white m-2" ref={addToTextRefs}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Reprehenderit quod perspiciatis magni quam explicabo libero.{' '}
           </p>
-          {/* <p className="text-medium white m-2" ref={addToTextRefs}>
-            I use the following tools to assist me in web development:
-          </p> */}
-          <div className="text-center">
+          <div className="text-center" ref={techsDivRef}>
             {technologies ? (
               technologies[0].technologies.map((tech) => (
-                <Badge name={tech} key={tech} ref={addToBadgeRefs} />
+                <Badge name={tech} key={tech} ref={addToTechBadgeRefs} />
               ))
             ) : (
               <Loader

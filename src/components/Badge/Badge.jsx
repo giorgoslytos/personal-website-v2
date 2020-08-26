@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, forwardRef } from 'react';
 import './Badge.scss';
 
-const Badge = ({ name }) => {
-  return <div className="badge">{name}</div>;
-};
+const Badge = React.forwardRef(({ name }, ref) => {
+  return (
+    <div className="badge" ref={ref}>
+      {name}
+    </div>
+  );
+});
 
 export default Badge;
