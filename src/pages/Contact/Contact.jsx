@@ -1,13 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Contact.scss';
 const Contact = () => {
-  const [email, setEmail] = useState(false);
-  useEffect(() => {
-    /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+/.test(email)
-      ? setEmail(true)
-      : setEmail(false);
-  });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+  const [validEmail, setValidEmail] = useState(true);
 
+  const [refNum, setRefNum] = useState(0);
+  const inputRefs = useRef([]);
+
+  useEffect(() => {
+    if (email !== '') {
+      /^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[A-Za-z]+/.test(email)
+        ? setValidEmail(true)
+        : setValidEmail(false);
+    } else setValidEmail(true);
+  }, [email]);
+
+  useEffect(() => {
+    inputRefs.current[refNum].focus();
+  }, [refNum]);
+
+  const addToRefs = (el) => {
+    if (el && !inputRefs.current.includes(el)) {
+      inputRefs.current.push(el);
+    }
+  };
   return (
     <div className="Contact" id="contact">
       <div className="q3 fake-cta">Get In Touch</div>
@@ -42,6 +61,14 @@ const Contact = () => {
                     id="name"
                     placeholder="John Doe"
                     className="input"
+                    ref={addToRefs}
+                    onChange={(e) => setName(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') setRefNum(refNum + 1);
+                    }}
+                    onFocus={(e) => {
+                      setRefNum(0);
+                    }}
                   />
                 </div>
                 <div className="form-control">
@@ -52,11 +79,19 @@ const Contact = () => {
                     id="name"
                     placeholder="johndoe@nowhere.com"
                     className="input"
+                    ref={addToRefs}
                     style={
-                      email
+                      validEmail
                         ? { borderBottom: '1px solid #00ffec' }
-                        : { borderBottom: '1px solid #00ffec' }
+                        : { borderBottom: '1px solid #ff0000' }
                     }
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') setRefNum(refNum + 1);
+                    }}
+                    onFocus={(e) => {
+                      setRefNum(1);
+                    }}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
               </div>
@@ -68,6 +103,14 @@ const Contact = () => {
                   id="name"
                   placeholder="Let me tell you something..."
                   className="input"
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') setRefNum(refNum + 1);
+                  }}
+                  onFocus={(e) => {
+                    setRefNum(2);
+                  }}
+                  onChange={(e) => setSubject(e.target.value)}
+                  ref={addToRefs}
                 />
               </div>
               <div className="form-control">
@@ -78,6 +121,11 @@ const Contact = () => {
                   id="name"
                   placeholder="You are literally the worst... Like... Really!"
                   className="input"
+                  onFocus={(e) => {
+                    setRefNum(3);
+                  }}
+                  onChange={(e) => setMessage(e.target.value)}
+                  ref={addToRefs}
                 />
               </div>
               <a className="q3 cta" href="/">

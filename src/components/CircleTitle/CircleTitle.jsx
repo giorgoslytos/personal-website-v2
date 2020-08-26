@@ -16,7 +16,7 @@ const CircleTitle = ({ num, title }) => {
       scrollTrigger: {
         id: `${num}`,
         trigger: circleRef.current,
-        start: 'top center+=20%',
+        start: 'top 80%',
         toggleActions: 'play pause resume pause',
       },
     });

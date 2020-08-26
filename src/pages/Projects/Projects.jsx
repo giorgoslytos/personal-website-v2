@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import './Projects.scss';
 import { FirebaseContext } from '../../contexts/FirebaseContext';
 import Project from '../../components/Project/Project';
 import Loader from 'react-loader-spinner';
+import { gsapLine } from '../../utils/gsapLine';
 
 const Projects = () => {
   const { projects } = useContext(FirebaseContext);
+  const lineRef = useRef();
   useEffect(() => {
-    console.log(projects);
+    gsapLine(lineRef.current, 1.2);
   });
   return (
     <div className="Projects" id="projects">
@@ -15,7 +17,7 @@ const Projects = () => {
         <div className="title-content">
           <span className="q3">03. </span>projects
         </div>
-        <div className="title-line"></div>
+        <div className="title-line" ref={lineRef}></div>
       </div>
       {projects ? (
         projects.map((projectInfo, index) => (

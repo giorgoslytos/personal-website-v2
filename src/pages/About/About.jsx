@@ -8,6 +8,8 @@ import { gsap } from 'gsap';
 import { CSSPlugin } from 'gsap/CSSPlugin';
 import { CSSRulePlugin } from 'gsap/CSSRulePlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsapLine } from '../../utils/gsapLine';
+import { gsapShorthand } from '../../utils/gsapShorthand';
 
 gsap.registerPlugin(CSSPlugin, CSSRulePlugin);
 
@@ -18,44 +20,14 @@ const About = () => {
   const skillBadgeRefs = useRef([]);
   const skillsDivRef = useRef([]);
   const techsDivRef = useRef([]);
+  const lineRef = useRef([]);
 
   useEffect(() => {
     console.log(textRefs);
     textRefs.current.forEach((el, index) => {
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 90%',
-        end: 'bottom 10%',
-        onEnter: () => {
-          gsap.fromTo(
-            el,
-            { top: '20px', autoAlpha: 0 },
-            { top: 0, autoAlpha: 1, duration: 1 }
-          );
-        },
-        onLeave: () => {
-          gsap.fromTo(
-            el,
-            { left: '0', autoAlpha: 1 },
-            { left: '20px', autoAlpha: 0, duration: 1 }
-          );
-        },
-        onEnterBack: () => {
-          gsap.fromTo(
-            el,
-            { left: '20px', autoAlpha: 0 },
-            { left: 0, autoAlpha: 1, duration: 1 }
-          );
-        },
-        onLeaveBack: () => {
-          gsap.fromTo(
-            el,
-            { top: 0, autoAlpha: 1 },
-            { top: '20px', autoAlpha: 0, duration: 1 }
-          );
-        },
-      });
+      gsapShorthand(el, 1.2, '30px');
     });
+    gsapLine(lineRef.current, 1.2);
   }, []);
 
   useEffect(() => {
@@ -77,7 +49,6 @@ const About = () => {
             trigger: skillsDivRef.current,
             start: 'top 50%',
             toggleActions: 'play none none none',
-            markers: true,
           },
         }
       );
@@ -103,7 +74,6 @@ const About = () => {
             trigger: techsDivRef.current,
             start: 'top 50%',
             toggleActions: 'play none none none',
-            markers: true,
           },
         }
       );
@@ -137,7 +107,7 @@ const About = () => {
           <span className="q3">02. </span>
           about
         </div>
-        <div className="title-line"></div>
+        <div className="title-line" ref={lineRef}></div>
       </div>
       <div className="flex">
         <CircleTitle num="02.01" title="Who am I?" />
@@ -169,8 +139,8 @@ const About = () => {
         <div className="content">
           <p className="text-medium white m-2" ref={addToTextRefs}>
             Some languages, libraries and technologies that I have worked with
-            as a professional or as a hobbyist, (I'm not an expert by any
-            means):
+            as a professional or as a hobbyist, (I'm not an expert in most of
+            them by any means):
           </p>
           <div className="text-center" ref={skillsDivRef}>
             {skills ? (

@@ -15,9 +15,12 @@
     }
     .title-line {
       width: 100%;
+      left: 0;
+      position: relative;
+      text-align: left;
       background-color: #c5c6c7;
       height: 1px;
-      margin: auto;
+      margin: auto 0;
     }
   }
   .flex {

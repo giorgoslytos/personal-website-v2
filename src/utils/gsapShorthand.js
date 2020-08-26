@@ -16,7 +16,6 @@ export function gsapShorthand($el, duration, top) {
         trigger: $el,
         start: 'top 90%',
         toggleActions: 'play none none none',
-        markers: true
       },
     }
   );

@@ -9,7 +9,7 @@ const Project = ({ align, projectInfo }) => {
   const refs = useRef([]);
   useEffect(() => {
     refs.current.forEach((el) => {
-      gsapShorthand(el, 0.8, '20px');
+      gsapShorthand(el, 1.2, '30px');
     });
   }, []);
 
@@ -29,12 +29,13 @@ const Project = ({ align, projectInfo }) => {
       }
     >
       <div
+        ref={addToRefs}
         className="content"
         style={align === 'right' ? { direction: 'rtl' } : { direction: 'ltr' }}
       >
+        {/* <div ref={addToRefs} style={{ position: 'relative' }}> */}
         <div
           className="h5"
-          ref={addToRefs}
           style={
             align === 'right'
               ? { direction: 'ltr', textAlign: 'right', alignSelf: 'stretch' }
@@ -46,9 +47,8 @@ const Project = ({ align, projectInfo }) => {
           </span>
           Project
         </div>
-        <div className="h3" ref={addToRefs}>
-          {projectInfo.projectName}
-        </div>
+        <div className="h3">{projectInfo.projectName}</div>
+        {/* </div> */}
         <ProjectDesc align={align} text={projectInfo.projectDesc} />
         <div className="badges">
           {projectInfo.projectTechs.map((badgeName) => (

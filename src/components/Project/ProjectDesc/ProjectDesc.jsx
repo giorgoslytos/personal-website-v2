@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext } from 'react';
 import './ProjectDesc.scss';
 import { ResizeContext } from '../../../contexts/ResizeContext';
-import { gsapShorthand } from '../../../utils/gsapShorthand';
 
 const ProjectDesc = ({ text, align }) => {
   const { width } = useContext(ResizeContext);
-  const ref = useRef();
   let alignment;
   switch (align) {
     case 'left':
@@ -29,11 +27,8 @@ const ProjectDesc = ({ text, align }) => {
         width,
       };
   }
-  useEffect(() => {
-    gsapShorthand(ref.current, 0.8, '20px');
-  }, []);
   return (
-    <div className="project-desc" style={alignment} ref={ref}>
+    <div className="project-desc" style={alignment}>
       <p className="text-small white">{text}</p>
     </div>
   );

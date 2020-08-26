@@ -8,7 +8,7 @@ const ProjectImg = ({ align, img }) => {
   const ref = useRef();
 
   useEffect(() => {
-    gsapShorthand(ref.current, 0.8, '-20px');
+    gsapShorthand(ref.current, 1.2, '-30px');
   }, []);
   return (
     <div
