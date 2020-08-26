@@ -113,7 +113,17 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="footer" style={{ opacity: scrollPos ? ' 0' : '1' }}>
+      <div
+        className="footer"
+        style={{ opacity: scrollPos ? ' 0' : '1' }}
+        style={
+          scrollPos
+            ? { opacity: '0', pointerEvents: 'none', cursor: 'none' }
+            : {
+                opacity: '1',
+              }
+        }
+      >
         <div className="links-wrapper" ref={addToRefs}>
           <a
             target="blank"
