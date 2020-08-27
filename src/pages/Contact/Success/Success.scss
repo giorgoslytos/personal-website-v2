@@ -1,0 +1,19 @@
+.success {
+  margin-top: 8rem !important;
+  margin-bottom: 8rem !important;
+  text-align: center;
+  position: relative;
+  flex: 9 1;
+  .h5 {
+    position: relative;
+    visibility: hidden;
+  }
+  svg {
+    margin: 5rem auto;
+    position: relative;
+    .path {
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 0;
+    }
+  }
+}

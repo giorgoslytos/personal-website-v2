@@ -1,30 +1,66 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Contact.scss';
+import emailjs from 'emailjs-com';
+import Success from './Success/Success';
+
 const Contact = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [subject, setSubject] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState(false);
+  const [email, setEmail] = useState(false);
+  const [subject, setSubject] = useState(false);
+  const [message, setMessage] = useState(false);
   const [validEmail, setValidEmail] = useState(true);
+  const [submittable, setSubmittable] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const [refNum, setRefNum] = useState(0);
   const inputRefs = useRef([]);
 
   useEffect(() => {
-    if (email !== '') {
+    if (email === true) setValidEmail(true);
+    else
       /^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[A-Za-z]+/.test(email)
         ? setValidEmail(true)
         : setValidEmail(false);
-    } else setValidEmail(true);
   }, [email]);
 
   useEffect(() => {
     inputRefs.current[refNum].focus();
   }, [refNum]);
 
+  useEffect(() => {
+    if (name && email && subject && message && validEmail) setSubmittable(true);
+    else setSubmittable(false);
+  }, [name, email, subject, message, validEmail]);
+
+  useEffect(() => {
+    emailjs.init('user_tLujmeoZ8OZzQdCSgZBiu');
+  });
   const addToRefs = (el) => {
     if (el && !inputRefs.current.includes(el)) {
       inputRefs.current.push(el);
+    }
+  };
+
+  const sendEmail = (e) => {
+    // e.preventDefault();
+    if (submittable) {
+      console.log('submitted');
+      setSubmitted(true);
+      // emailjs
+      //   .send('default_service', 'personal_website', {
+      //     subject,
+      //     name,
+      //     email,
+      //     message,
+      //   })
+      //   .then(
+      //     function () {
+      //       console.log('Sent!');
+      //     },
+      //     function (err) {
+      //       alert('Send email failed!\r\n Response:\n ' + JSON.stringify(err));
+      //     }
+      //   );
     }
   };
   return (
@@ -32,56 +68,89 @@ const Contact = () => {
       <div className="q3 fake-cta">Get In Touch</div>
       <div className="container">
         <div className="contact-wrapper">
-          <div className="content-container">
-            <div className="desc">
-              <p className="text-large">Let's talk!</p>
-              <p className="text-large">
-                I’m always available on{' '}
-                <a
-                  className="q3"
-                  target="blank"
-                  href="https://www.linkedin.com/in/george-litos-215b2918a/"
-                >
-                  linkedIn
-                </a>{' '}
-                and by{' '}
-                <a className="q3" href="mailto:georgioslytos@gmail.com">
-                  email
-                </a>
-                , but you can fill out this fancy form!
-              </p>
-            </div>
-            <form action="" className="forms-wrapper">
-              <div className="row">
-                <div className="form-control">
-                  <div className="h5">name</div>
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="John Doe"
-                    className="input"
-                    ref={addToRefs}
-                    onChange={(e) => setName(e.target.value)}
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter') setRefNum(refNum + 1);
-                    }}
-                    onFocus={(e) => {
-                      setRefNum(0);
-                    }}
-                  />
+          {submitted ? (
+            <Success />
+          ) : (
+            <div className="content-container">
+              <div className="desc">
+                <p className="text-large">Let's talk!</p>
+                <p className="text-large">
+                  I’m always available on{' '}
+                  <a
+                    className="q3"
+                    target="blank"
+                    href="https://www.linkedin.com/in/george-litos-215b2918a/"
+                  >
+                    linkedIn
+                  </a>{' '}
+                  and by{' '}
+                  <a className="q3" href="mailto:georgioslytos@gmail.com">
+                    email
+                  </a>
+                  , but you can fill out this fancy form!
+                </p>
+              </div>
+              <div action="" className="forms-wrapper">
+                <div className="row">
+                  <div className="form-control">
+                    <div className="h5">name</div>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      placeholder="John Doe"
+                      className="input"
+                      ref={addToRefs}
+                      style={
+                        name !== ''
+                          ? { borderBottom: '1px solid #00ffec' }
+                          : { borderBottom: '1px solid #ff0000' }
+                      }
+                      onChange={(e) => setName(e.target.value)}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') setRefNum(refNum + 1);
+                      }}
+                      onFocus={(e) => {
+                        setRefNum(0);
+                      }}
+                    />
+                  </div>
+                  <div className="form-control">
+                    <div className="h5">email</div>
+                    <input
+                      type="emai"
+                      name="name"
+                      id="name"
+                      placeholder="johndoe@nowhere.com"
+                      className="input"
+                      ref={addToRefs}
+                      style={
+                        email === false
+                          ? { borderBottom: '1px solid #00ffec' }
+                          : validEmail
+                          ? { borderBottom: '1px solid #00ffec' }
+                          : { borderBottom: '1px solid #ff0000' }
+                      }
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') setRefNum(refNum + 1);
+                      }}
+                      onFocus={(e) => {
+                        setRefNum(1);
+                      }}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
                 </div>
                 <div className="form-control">
-                  <div className="h5">email</div>
+                  <div className="h5">subject</div>
                   <input
                     type="text"
                     name="name"
                     id="name"
-                    placeholder="johndoe@nowhere.com"
+                    placeholder="Let me tell you something..."
                     className="input"
-                    ref={addToRefs}
                     style={
-                      validEmail
+                      subject !== ''
                         ? { borderBottom: '1px solid #00ffec' }
                         : { borderBottom: '1px solid #ff0000' }
                     }
@@ -89,54 +158,45 @@ const Contact = () => {
                       if (e.key === 'Enter') setRefNum(refNum + 1);
                     }}
                     onFocus={(e) => {
-                      setRefNum(1);
+                      setRefNum(2);
                     }}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => setSubject(e.target.value)}
+                    ref={addToRefs}
                   />
                 </div>
+                <div className="form-control">
+                  <div className="h5">message</div>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="You are literally the worst... Like... Really!"
+                    className="input"
+                    style={
+                      message !== ''
+                        ? { borderBottom: '1px solid #00ffec' }
+                        : { borderBottom: '1px solid #ff0000' }
+                    }
+                    onFocus={(e) => {
+                      setRefNum(3);
+                    }}
+                    onChange={(e) => setMessage(e.target.value)}
+                    ref={addToRefs}
+                  />
+                </div>
+                <a
+                  className={`q3 cta ${submittable ? '' : 'forbidden'}`}
+                  onClick={(e) => sendEmail(e)}
+                >
+                  Send
+                </a>
               </div>
-              <div className="form-control">
-                <div className="h5">subject</div>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Let me tell you something..."
-                  className="input"
-                  onKeyPress={(e) => {
-                    if (e.key === 'Enter') setRefNum(refNum + 1);
-                  }}
-                  onFocus={(e) => {
-                    setRefNum(2);
-                  }}
-                  onChange={(e) => setSubject(e.target.value)}
-                  ref={addToRefs}
-                />
+              <div className="text-center footer">
+                <div className="text-small">designed & developed by</div>
+                <div className="text-small">George Litos</div>
               </div>
-              <div className="form-control">
-                <div className="h5">message</div>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="You are literally the worst... Like... Really!"
-                  className="input"
-                  onFocus={(e) => {
-                    setRefNum(3);
-                  }}
-                  onChange={(e) => setMessage(e.target.value)}
-                  ref={addToRefs}
-                />
-              </div>
-              <a className="q3 cta" href="/">
-                Send
-              </a>
-            </form>
-            <div className="text-center footer">
-              <div className="text-small">designed & developed by</div>
-              <div className="text-small">George Litos</div>
             </div>
-          </div>
+          )}
           <div className="links-wrapper">
             <a href="mailto:georgioslytos@gmail.com" className="mail">
               georgioslytos@gmail.com

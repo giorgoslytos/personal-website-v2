@@ -143,7 +143,7 @@ const About = () => {
             them by any means):
           </p>
           <div className="text-center" ref={skillsDivRef}>
-            {skills ? (
+            {skills && skills[0].skills ? (
               skills[0].skills.map((skill) => (
                 <Badge name={skill} key={skill} ref={addToSkillsBadgeRefs} />
               ))
@@ -173,7 +173,7 @@ const About = () => {
             Reprehenderit quod perspiciatis magni quam explicabo libero.{' '}
           </p>
           <div className="text-center" ref={techsDivRef}>
-            {technologies ? (
+            {technologies && technologies[0].technologies ? (
               technologies[0].technologies.map((tech) => (
                 <Badge name={tech} key={tech} ref={addToTechBadgeRefs} />
               ))

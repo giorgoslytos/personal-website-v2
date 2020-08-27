@@ -5,9 +5,11 @@ export const ResizeContext = createContext();
 const ResizeContextProvider = (props) => {
   const [height, setHeight] = useState(350);
   const [width, setWidth] = useState(550);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const debouncedHandleResize = () => {
+      setWindowWidth(window.innerWidth)
       if (window.innerWidth < 1200 && window.innerWidth > 800) {
         setWidth(window.innerWidth / 2.3)
         setHeight(window.innerWidth / 2.3 * .64)
@@ -32,7 +34,7 @@ const ResizeContextProvider = (props) => {
 
 
   return (
-    <ResizeContext.Provider value={{ width, height }}>
+    <ResizeContext.Provider value={{ width, height, windowWidth }}>
       {props.children}
     </ResizeContext.Provider>
   );

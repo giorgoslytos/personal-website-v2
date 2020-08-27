@@ -10,7 +10,7 @@ const Projects = () => {
   const lineRef = useRef();
   useEffect(() => {
     gsapLine(lineRef.current, 1.2);
-  });
+  }, []);
   return (
     <div className="Projects" id="projects">
       <div className="title">

@@ -9,7 +9,7 @@ const FirebaseContextProvider = (props) => {
   const [technologies, setTechnologies] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       const db = firebase.firestore();
       let data = await db.collection("projects").get();
       setProjects(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
@@ -17,8 +17,7 @@ const FirebaseContextProvider = (props) => {
       setSkills(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       data = await db.collection("technologies").get();
       setTechnologies(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-    };
-    fetchData();
+    })()
   }, []);
 
   return (

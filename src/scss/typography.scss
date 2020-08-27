@@ -29,6 +29,10 @@ body {
   text-align: center;
 }
 
+.forbidden {
+  cursor: not-allowed !important;
+}
+
 .title {
   color: white;
   font-size: 32px;
@@ -175,6 +179,7 @@ a {
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
+      -webkit-text-size-adjust: 18px;
       font-size: 18px;
     }
   }
