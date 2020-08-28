@@ -11,14 +11,10 @@ const CircleTitle = ({ num, title }) => {
   const { windowWidth } = useContext(ResizeContext);
   const [responsiveWidth, setResponsiveWidth] = useState(250);
   useEffect(() => {
-    console.log('window width');
-
     let tmpWidth = windowWidth > 800 ? 250 : 150;
     if (tmpWidth != responsiveWidth) {
       setResponsiveWidth(tmpWidth);
     }
-    console.log(tmpWidth);
-    console.log(responsiveWidth);
   }, [windowWidth]);
   useEffect(() => {
     gsap.fromTo(

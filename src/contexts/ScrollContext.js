@@ -8,7 +8,6 @@ const ScrollContextProvider = (props) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // console.log(window.scrollY);
       setScrollPos(window.scrollY);
       setNavPos({ pre: navPos.now, now: window.scrollY });
     };

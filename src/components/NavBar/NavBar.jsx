@@ -33,7 +33,6 @@ const NavBar = () => {
   });
 
   useEffect(() => {
-    console.log(revealRefs);
     gsap.from(headerRef.current, {
       autoAlpha: 0,
       duration: 1.2,
@@ -60,7 +59,6 @@ const NavBar = () => {
     });
   }, []);
   useEffect(() => {
-    console.log(rule);
     gsap.fromTo(
       rule,
       {

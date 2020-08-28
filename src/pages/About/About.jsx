@@ -23,7 +23,6 @@ const About = () => {
   const lineRef = useRef([]);
 
   useEffect(() => {
-    console.log(textRefs);
     textRefs.current.forEach((el, index) => {
       gsapShorthand(el, 1.2, '30px');
     });

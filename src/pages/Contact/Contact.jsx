@@ -43,7 +43,6 @@ const Contact = () => {
 
   const sendEmail = () => {
     if (submittable) {
-      console.log('submitted');
       setSubmitted(true);
     } else {
       if (name && email && subject && message && !validEmail) {
