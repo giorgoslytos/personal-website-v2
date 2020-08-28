@@ -125,8 +125,8 @@ const Contact = () => {
                       <div className="h5">email</div>
                       <input
                         type="emai"
-                        name="name"
-                        id="name"
+                        name="email"
+                        id="email"
                         placeholder="johndoe@nowhere.com"
                         className="input"
                         ref={addToRefs}
@@ -151,8 +151,8 @@ const Contact = () => {
                     <div className="h5">subject</div>
                     <input
                       type="text"
-                      name="name"
-                      id="name"
+                      name="subject"
+                      id="subject"
                       placeholder="Let me tell you something..."
                       className="input"
                       style={
@@ -174,8 +174,8 @@ const Contact = () => {
                     <div className="h5">message</div>
                     <input
                       type="text"
-                      name="name"
-                      id="name"
+                      name="message"
+                      id="message"
                       placeholder="You are literally the worst... Like... Really!"
                       className="input"
                       style={
