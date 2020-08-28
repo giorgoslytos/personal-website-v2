@@ -30,21 +30,6 @@ const Contact = () => {
   useEffect(() => {
     if (name && email && subject && message && validEmail) {
       setSubmittable(true);
-      emailjs
-        .send('default_service', 'personal_website', {
-          subject,
-          name,
-          email,
-          message,
-        })
-        .then(
-          function () {
-            console.log('Sent!');
-          },
-          function (err) {
-            alert('Send email failed!\r\n Response:\n ' + JSON.stringify(err));
-          }
-        );
     } else setSubmittable(false);
   }, [name, email, subject, message, validEmail]);
 
@@ -60,6 +45,21 @@ const Contact = () => {
   const sendEmail = () => {
     if (submittable) {
       setSubmitted(true);
+      emailjs
+        .send('default_service', 'personal_website', {
+          subject,
+          name,
+          email,
+          message,
+        })
+        .then(
+          function () {
+            console.log('Sent!');
+          },
+          function (err) {
+            alert('Send email failed!\r\n Response:\n ' + JSON.stringify(err));
+          }
+        );
     } else {
       if (name && email && subject && message && !validEmail) {
         alert('Enter a valid email');
