@@ -6,6 +6,7 @@ export const FirebaseContext = createContext();
 const FirebaseContextProvider = (props) => {
   const [projects, setProjects] = useState(null);
   const [skills, setSkills] = useState(null);
+  const [mainSkills, setMainSkills] = useState(null);
   const [technologies, setTechnologies] = useState(null);
 
   useEffect(() => {
@@ -15,13 +16,15 @@ const FirebaseContextProvider = (props) => {
       setProjects(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       data = await db.collection("skills").get();
       setSkills(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      data = await db.collection("main-skills").get();
+      setMainSkills(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       data = await db.collection("technologies").get();
       setTechnologies(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
     })()
   }, []);
 
   return (
-    <FirebaseContext.Provider value={{ projects, skills, technologies }}>
+    <FirebaseContext.Provider value={{ projects, skills, technologies, mainSkills }}>
       {props.children}
     </FirebaseContext.Provider>
   );
