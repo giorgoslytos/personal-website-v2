@@ -34,7 +34,7 @@ const CircleTitle = ({ num, title }) => {
           id: `${num}`,
           trigger: circleRef.current,
           start: 'top 80%',
-          toggleActions: 'play pause resume pause',
+          toggleActions: 'play none none none',
         },
       }
     );
