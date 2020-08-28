@@ -11,7 +11,7 @@ const FirebaseContextProvider = (props) => {
   useEffect(() => {
     (async () => {
       const db = firebase.firestore();
-      let data = await db.collection("projects").get();
+      let data = await db.collection("projects").orderBy('projectNum', 'asc').get();
       setProjects(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       data = await db.collection("skills").get();
       setSkills(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
