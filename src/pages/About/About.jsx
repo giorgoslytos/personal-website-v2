@@ -162,14 +162,12 @@ const About = () => {
         <CircleTitle num="02.03" title="Toolset?" />
         <div className="content">
           <p className="text-medium white m-2" ref={addToTextRefs}>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit
-            earum expedita aperiam, voluptate, porro tempora suscipit recusandae
-            quasi quis, praesentium labore culpa adipisci. Aspernatur quibusdam
-            ut molestiae deserunt, quas nisi?
+            I know that this subsection doesn't really have any meaning, but why
+            not include it when I know it make my website appear bigger? ;). It
+            is also a great conversation starter!
           </p>
           <p className="text-medium white m-2" ref={addToTextRefs}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Reprehenderit quod perspiciatis magni quam explicabo libero.{' '}
+            I use the following tools to assist me in web development:
           </p>
           <div className="text-center" ref={techsDivRef}>
             {technologies && technologies[0].technologies ? (
