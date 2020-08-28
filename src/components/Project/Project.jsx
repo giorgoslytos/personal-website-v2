@@ -33,7 +33,6 @@ const Project = ({ align, projectInfo }) => {
         className="content"
         style={align === 'right' ? { direction: 'rtl' } : { direction: 'ltr' }}
       >
-        {/* <div ref={addToRefs} style={{ position: 'relative' }}> */}
         <div
           className="h5"
           style={
@@ -48,7 +47,6 @@ const Project = ({ align, projectInfo }) => {
           Project
         </div>
         <div className="h3">{projectInfo.projectName}</div>
-        {/* </div> */}
         <ProjectDesc align={align} text={projectInfo.projectDesc} />
         <div className="badges">
           {projectInfo.projectTechs.map((badgeName) => (
@@ -92,7 +90,7 @@ const Project = ({ align, projectInfo }) => {
           </a>
         </div>
       </div>
-      <a href={projectInfo.projectLinks[1]}>
+      <a href={projectInfo.projectLinks[1]} target="blank">
         <ProjectImg
           className="project-img"
           align={align}

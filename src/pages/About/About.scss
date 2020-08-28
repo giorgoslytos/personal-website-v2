@@ -2,9 +2,6 @@
   .text-medium {
     position: relative;
     visibility: hidden;
-    &:before {
-      content: '';
-    }
   }
   .title {
     margin: 4rem 0;

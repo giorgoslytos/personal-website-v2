@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 
-export function gsapShorthand($el, duration, top) {
+export function gsapShorthand($el, duration, top, delay) {
   gsap.fromTo(
     $el,
     {
@@ -9,6 +9,7 @@ export function gsapShorthand($el, duration, top) {
     },
     {
       duration,
+      delay,
       autoAlpha: 1,
       top: 0,
       ease: 'power4.inOut',

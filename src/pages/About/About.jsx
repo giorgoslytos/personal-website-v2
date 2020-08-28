@@ -144,24 +144,24 @@ const About = () => {
         <CircleTitle num="02.01" title="Who am I?" />
         <div className="content mx-2">
           <p className="text-medium white" ref={addToTextRefs}>
-            - I'm George, a software engineer, based in Thessaloniki, Greece.
+            I'm George, a software engineer, based in Thessaloniki, Greece.
           </p>
           <p className="text-medium white" ref={addToTextRefs}>
-            - Graduate of the Electrical and Computer Engineering Department of
+            Graduate of the Electrical and Computer Engineering Department of
             the University of Thessaly
           </p>
           <p className="text-medium white" ref={addToTextRefs}>
-            - I’m predominantly a Front-End Developer, but I am also interested
-            at - and have some professional and hobbyist experience with - the
+            I’m predominantly a Front-End Developer, but I am also interested at
+            - and have some professional and hobbyist experience with - the
             Back-End.
           </p>
           <p className="text-medium white" ref={addToTextRefs}>
-            - I enjoy creating websites and web apps and learning anything about
+            I enjoy creating websites and web apps and learning anything about
             the web and latest technology developments.
           </p>
           <p className="text-medium white" ref={addToTextRefs}>
-            - I have professional experience as an AEM developer (a CMS written
-            in Java), JQuery, Bootstrap and Parsley
+            I have professional experience as an AEM developer (a CMS written in
+            Java), JQuery, Bootstrap and Parsley
           </p>
         </div>
       </div>
