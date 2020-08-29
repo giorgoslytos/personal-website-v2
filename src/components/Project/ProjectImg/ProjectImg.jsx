@@ -4,7 +4,7 @@ import { ResizeContext } from '../../../contexts/ResizeContext';
 import { gsapShorthand } from '../../../utils/gsapShorthand';
 
 const ProjectImg = ({ align, img }) => {
-  const { width, height } = useContext(ResizeContext);
+  const { width } = useContext(ResizeContext);
   const ref = useRef();
   const bordersRef = useRef();
 

@@ -115,7 +115,6 @@ const Home = () => {
       </div>
       <div
         className="footer"
-        style={{ opacity: scrollPos ? ' 0' : '1' }}
         style={
           scrollPos
             ? { opacity: '0', pointerEvents: 'none', cursor: 'none' }

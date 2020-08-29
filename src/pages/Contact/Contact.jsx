@@ -18,7 +18,7 @@ const Contact = () => {
   useEffect(() => {
     if (email === true) setValidEmail(true);
     else
-      /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)
+      /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/.test(email)
         ? setValidEmail(true)
         : setValidEmail(false);
   }, [email]);
@@ -172,8 +172,9 @@ const Contact = () => {
                   </div>
                   <div className="form-control">
                     <div className="h5">message</div>
-                    <input
+                    <textarea
                       type="text"
+                      rows={3}
                       name="message"
                       id="message"
                       placeholder="You are literally the worst... Like... Really!"
@@ -193,12 +194,12 @@ const Contact = () => {
                       ref={addToRefs}
                     />
                   </div>
-                  <a
+                  <button
                     className={`q3 cta ${submittable ? '' : 'forbidden'}`}
                     onClick={() => sendEmail()}
                   >
                     Send
-                  </a>
+                  </button>
                 </div>
               </>
             )}

@@ -70,7 +70,7 @@ const NavBar = () => {
         duration: 0.8,
       }
     );
-  }, []);
+  }, [rule]);
 
   const addToRefs = (el) => {
     if (el && !revealRefs.current.includes(el)) {
@@ -117,7 +117,6 @@ const NavBar = () => {
           <a
             ref={addToRefs}
             href="#contact"
-            className="cta"
             className={`cta ${navLocation === 'contact' ? 'cta-active' : ''}`}
           >
             <div className="q3">Contact</div>

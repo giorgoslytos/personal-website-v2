@@ -151,9 +151,9 @@ const About = () => {
             the University of Thessaly
           </p>
           <p className="text-medium white" ref={addToTextRefs}>
-            I’m predominantly a Front-End Developer, but I am also interested at
-            - and have some professional and hobbyist experience with - the
-            Back-End.
+            I’m predominantly a Front-End Developer, but I am also interested in
+            Back-Εnd development , having dealt with it professionally as well
+            as out of personal interest and practice in it
           </p>
           <p className="text-medium white" ref={addToTextRefs}>
             I enjoy creating websites and web apps and learning anything about
@@ -170,8 +170,8 @@ const About = () => {
         <div className="content">
           <p className="text-medium white m-2" ref={addToTextRefs}>
             My main field of expertise is JavaScript and generally the front end
-            stack. More specifically, I feel I am for fluent in the below
-            technologies:
+            stack. More specifically, I have more practical experience with the
+            below technologies:
           </p>
           <div className="text-center" ref={mainSkillsDivRef}>
             {mainSkills && mainSkills[0].skills ? (

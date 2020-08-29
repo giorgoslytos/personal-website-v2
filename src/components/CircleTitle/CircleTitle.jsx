@@ -9,13 +9,13 @@ gsap.registerPlugin(ScrollTrigger);
 const CircleTitle = ({ num, title }) => {
   const circleRef = useRef();
   const { windowWidth } = useContext(ResizeContext);
-  const [responsiveWidth, setResponsiveWidth] = useState(250);
+  const [responsiveWidth, setResponsiveWidth] = useState();
   useEffect(() => {
     let tmpWidth = windowWidth > 800 ? 250 : 150;
-    if (tmpWidth != responsiveWidth) {
+    if (tmpWidth !== responsiveWidth) {
       setResponsiveWidth(tmpWidth);
     }
-  }, [windowWidth]);
+  }, [windowWidth, responsiveWidth]);
   useEffect(() => {
     gsap.fromTo(
       circleRef.current,
@@ -38,7 +38,7 @@ const CircleTitle = ({ num, title }) => {
         },
       }
     );
-  }, [responsiveWidth]);
+  }, [responsiveWidth, num]);
   return (
     <div className="circle-title">
       <span className="q2">{num}</span>
